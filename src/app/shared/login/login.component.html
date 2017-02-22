@@ -1,0 +1,29 @@
+<section id="login">
+  <div class="container">
+    <div class="center">
+      <h2><i class="fa fa-unlock"></i> Login to your account</h2>
+    </div>
+
+    <div class="col-md-6 col-sm-offset-3">
+       <form class="form-signin">
+        <div class="form-group col-md-12">
+            <label for="username">Username</label>
+            <input name="username"  id="username" type="text" class="form-control myInput" id="username" [(ngModel)]="username" placeholder="Username"  required>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label for="password">Password</label>
+            <input name="password" id="inputPassword"  type="password" class="form-control myInput" id="password" [(ngModel)]="password" placeholder="Password" required>
+        </div>
+
+        <div class="col-md-12">
+            <button class="btn btn-lg btn-primary btn-block" (click)="login()">Sign in</button>
+        <a class="btn btn-default btn-block" routerLink="/lupa">Lupa Password</a>
+
+        </div>
+    </form>
+    </div>
+  </div>
+  <div class="center">
+  </div>
+</section>
