@@ -1,36 +1,5 @@
-<header id="header" >
-    <div class="top-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-xs-4">
-                    <div class="top-number">
-                        <p><i class="fa fa-phone-square"></i> +0123 456 70 90</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xs-8">
-                    <div class="social">
-                        <ul class="social-share">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                        </ul>
-                        <div class="search">
-                            <form role="form">
-                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                <i class="fa fa-search"></i>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/.container-->
-    </div>
-    <!--/.top-bar-->
-
-    <nav class="navbar navbar-inverse" role="banner">
+<header id="header"  class="containertop" >
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="banner">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,30 +13,30 @@
 
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li routerlinkActive="active" ><a routerLink="/">Home</a></li>
-                    <li routerlinkActive="active" ><a routerLink="/about">About Us</a></li>
+                    <li  ><a routerLink="/">Home</a></li>
+                    <li  ><a routerLink="/about">About Us</a></li>
 
                     <li *ngIf="auth.sudahLogin()" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transaksi <i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li  routerlinkActive="active" ><a routerLink="/gadai/simulasi">Simulasi</a></li>
-                            <li  routerlinkActive="active"><a routerLink="/gadai/hostoty">History</a></li>
+                            <li><a routerLink="/gadai/simulasi">Simulasi</a></li>
+                            <li><a routerLink="/gadai/hostoty">History</a></li>
                         </ul>
                     </li>
 
                      <li *ngIf="auth.sudahLogin()" class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{auth.getUserInfo().fullname}} <i class="fa fa-angle-down"></i></a>
                          <ul class="dropdown-menu">
-                             <li  routerlinkActive="active"> <a routerLink="/profile">Profile</a></li>
-                             <li  routerlinkActive="active"> <a routerLink="/login" (click)="logout()">Logout</a></li>
+                             <li> <a routerLink="/profile">Profile</a></li>
+                             <li> <a routerLink="/login" (click)="logout()">Logout</a></li>
                         </ul>
                     </li>
                     
                     <li *ngIf="!auth.sudahLogin()" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login/Register<i class="fa fa-angle-down"></i></a>
                          <ul class="dropdown-menu">
-                             <li  routerlinkActive="active"> <a routerLink="/login">Login</a></li>
-                             <li  routerlinkActive="active"> <a routerLink="/registrasi">Register</a></li>
+                             <li> <a routerLink="/login">Login</a></li>
+                             <li> <a routerLink="/registrasi">Register</a></li>
                         </ul>
                     </li>
                 </ul>

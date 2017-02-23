@@ -73,7 +73,7 @@ hr {
 
 .btn-primary:hover, 
 .btn-primary:focus{
-  background: #006400;
+  background: #008000;
   outline: none;
   box-shadow: none;
 } 
@@ -121,7 +121,6 @@ body > section {
 .center {
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 .scaleIn {
@@ -1936,7 +1935,7 @@ ul.social_icons li  a i{
 
 .form-group .form-control {
   padding: 7px 12px;
-  border-color:#f2f2f2;
+  border-color:#888888;
   box-shadow: none;
 }
 
@@ -2217,6 +2216,10 @@ ul.pagination > li:hover > a {
   outline: 0 none;
 }
 
+.form-control:focus,
+.single-line:focus {
+  border: 1.7px solid #006400;
+}
 
 ul.tag-cloud, 
 ul.sidebar-gallery {

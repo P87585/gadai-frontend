@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Untuk Memisahkan header*/
+.containertop {
+	padding-top: 80px;
+}
+
+/* Untuk Memisahkan footer*/
+.containerbuttom {
+	padding-bottom: 30px;
+}
+
+.form-control:focus,
+.single-line:focus {
+  border: 1.8px solid #006400;
+}
