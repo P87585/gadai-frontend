@@ -1,0 +1,10 @@
+{
+    "/oauth/token": {
+        "target": "https://gadai-auth.herokuapp.com",
+        "secure": false
+    },
+    "/api/harga/": {
+        "target": "https://gadai-backend.herokuapp.com",
+        "secure": false
+    }
+}

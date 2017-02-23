@@ -24,17 +24,17 @@ export class RegistrasiComponent implements OnInit {
     console.log('Username :' + this.username);
     console.log('password :' + this.password);
 
-    this.progressService.showDialog("Memeriksa username dan password");
+    // this.progressService.showDialog("Memeriksa username dan password");
 
-    setTimeout(() => {
-      if (this.auth.register(this.username, this.password)) {
-        console.log("Register sukses");
-        this.router.navigate(["/login"]);
-      } else {
-        console.log("Register gagal");
-      }
+    // setTimeout(() => {
+    //   if (this.auth.register(this.username, this.password)) {
+    //     console.log("Register sukses");
+    //     this.router.navigate(["/login"]);
+    //   } else {
+    //     console.log("Register gagal");
+    //   }
 
-      this.progressService.hideDialog();
-    }, 3 * 1000);
+    //   this.progressService.hideDialog();
+    // }, 3 * 1000);
   }
 }

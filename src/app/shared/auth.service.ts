@@ -1,47 +1,66 @@
 import { Injectable } from '@angular/core';
+import { Http, Headers, URLSearchParams } from '@angular/http';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
+
+import 'rxjs/add/operator/toPromise';
+
+const STORAGE_KEY_AUTH = "authentication";
 
 @Injectable()
 export class AuthService {
 
-	constructor() { }
+	jwtHelper: JwtHelper = new JwtHelper();
+
+	constructor(private http: Http) { }
 
 	sudahLogin(): boolean {
-		return localStorage.getItem("userInfo") != null
-			&& localStorage.getItem("token") != null;
+		return tokenNotExpired("access_token");
 	}
 
-	login(username: string, password: string): boolean {
-		if ("admin" == username && "123" == password) {
-			let userInfo = {
-				fullname: "Administrator",
-				username: "admin"
-			};
+	getUserInfo(): any {
+		return JSON.parse(localStorage.getItem(STORAGE_KEY_AUTH));
+	}
 
-			localStorage.setItem("userInfo", JSON.stringify(userInfo));
-			localStorage.setItem("token", "abcd1234");
-			return true;
-		}
-		return false;
+	login(username: string, password: string): Promise<boolean> {
+
+ 		let client_id = 'aplikasijs';
+    	let client_secret = 'aplikasi123';
+    	var basicheader = btoa(client_id + ':' + client_secret);	
+
+		let url: string = "/oauth/token";
+		let body = new URLSearchParams()
+		body.append("grant_type", "password");
+		body.append("username", username);
+		body.append("password", password);
+
+		let basicAuthHeader = "Basic "+ basicheader;
+		let headers = new Headers({
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': basicAuthHeader
+		});
+		return this.http.post(url, body, { headers: headers }).toPromise()
+			.then(response => {
+				let token = response.json();
+				console.log(token);
+				if (token && token.access_token) {
+					localStorage.setItem("access_token", token.access_token);
+					let tokenContent = this.jwtHelper.decodeToken(token.access_token);
+					let userObject = {
+						username: username,
+						fullname: tokenContent.user_name,
+						permissions: tokenContent.authorities,
+						access_token: token.access_token
+					};
+					console.log("permissions", userObject.permissions);
+					localStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(userObject));
+					return true;
+				}
+				return false;
+			});
 	}
 
 	logout(): void {
-		localStorage.removeItem("userInfo");
-		localStorage.removeItem("token");
-	}
-
-	getUserInfo() {
-		return JSON.parse(localStorage.getItem("userInfo"));
-	}
-
-
-	register(username: string, password: string): boolean {
-		if ("admin" == username && "123" == password) {
-			let userInfo = {
-				fullname: "Administrator",
-				username: "admin"
-			};
-			return true;
-		}
-		return false;
+		localStorage.removeItem(STORAGE_KEY_AUTH);
+		localStorage.removeItem("access_token");
 	}
 }

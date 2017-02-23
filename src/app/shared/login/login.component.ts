@@ -10,8 +10,11 @@ import { ProgressDialogService } from '../progress-dialog.service';
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
-  password: string;
+  // username: string;
+  // password: string;
+
+  username: string = "user001";
+  password: string = "u00123";
 
   constructor(private auth: AuthService, private router: Router,
     private progressService: ProgressDialogService
@@ -24,17 +27,28 @@ export class LoginComponent implements OnInit {
     console.log('Username :' + this.username);
     console.log('password :' + this.password);
 
-    this.progressService.showDialog("Memeriksa username dan password");
+    // this.progressService.showDialog("Memeriksa username dan password");
 
-    setTimeout(() => {
-      if (this.auth.login(this.username, this.password)) {
-        console.log("Login sukses");
-        this.router.navigate(["/"]);
-      } else {
-        console.log("Login gagal");
-      }
+    // setTimeout(() => {
+    //   if (this.auth.login(this.username, this.password)) {
+    //     console.log("Login sukses");
+    //     this.router.navigate(["/"]);
+    //   } else {
+    //     console.log("Login gagal");
+    //   }
 
-      this.progressService.hideDialog();
-    }, 3 * 1000);
+    //   this.progressService.hideDialog();
+    // }, 3 * 1000);
+
+
+    this.auth.login(this.username, this.password)
+      .then(sukses => {
+        if (sukses) {
+          this.router.navigate(['/']);
+        } else {
+          console.log("Login gagal");
+        }
+      });
+
   }
 }

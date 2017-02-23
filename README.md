@@ -38,3 +38,6 @@ Run mvn clean spring-boot:un. Navigate to `http://localhost:8080/`
 ## Test Back End
 
 `http://localhost:8080/api/user`
+
+
+ng serve --proxy-config proxy.conf.json
