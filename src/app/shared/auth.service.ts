@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, URLSearchParams } from '@angular/http';
-import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
-
+import { Http, Response }          from '@angular/http';
+import { Headers, URLSearchParams, RequestOptions } from '@angular/http';
+import { tokenNotExpired , JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/toPromise';
-
-const STORAGE_KEY_AUTH = "authentication";
 
 @Injectable()
 export class AuthService {
-
-	jwtHelper: JwtHelper = new JwtHelper();
+	jwtHelper : JwtHelper = new JwtHelper();
 
 	constructor(private http: Http) { }
 
@@ -18,29 +15,32 @@ export class AuthService {
 	}
 
 	getUserInfo(): any {
-		return JSON.parse(localStorage.getItem(STORAGE_KEY_AUTH));
+		return JSON.parse(localStorage.getItem("userInfo"));
 	}
 
 	login(username: string, password: string): Promise<boolean> {
 
- 		let client_id = 'aplikasijs';
-    	let client_secret = 'aplikasi123';
-    	var basicheader = btoa(client_id + ':' + client_secret);	
-
+		let client_id = 'aplikasijs';
+		let client_secret = 'aplikasi123';
+		var basicheader = btoa(client_id + ':' + client_secret);
+		
 		let url: string = "/oauth/token";
 		let body = new URLSearchParams()
 		body.append("grant_type", "password");
 		body.append("username", username);
 		body.append("password", password);
 
-		let basicAuthHeader = "Basic "+ basicheader;
+		// body = grant_type=password&username="+username+"&password="+password
+		let basicAuthHeader = "Basic " + basicheader;
 		let headers = new Headers({
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Authorization': basicAuthHeader
 		});
-		return this.http.post(url, body, { headers: headers }).toPromise()
-			.then(response => {
-				let token = response.json();
+
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(url, body, options).toPromise()
+			.then(hasil  => {
+				let token = hasil.json();
 				console.log(token);
 				if (token && token.access_token) {
 					localStorage.setItem("access_token", token.access_token);
@@ -52,15 +52,18 @@ export class AuthService {
 						access_token: token.access_token
 					};
 					console.log("permissions", userObject.permissions);
-					localStorage.setItem(STORAGE_KEY_AUTH, JSON.stringify(userObject));
+					 localStorage.setItem("userInfo", JSON.stringify({username : username, fullname: username}));
 					return true;
 				}
+				return false;
+			}).catch(error => {
+				console.log(error);
 				return false;
 			});
 	}
 
 	logout(): void {
-		localStorage.removeItem(STORAGE_KEY_AUTH);
+		localStorage.removeItem("userInfo");
 		localStorage.removeItem("access_token");
 	}
 }

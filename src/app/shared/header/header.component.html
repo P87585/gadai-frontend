@@ -15,12 +15,13 @@
                 <ul class="nav navbar-nav">
                     <li  ><a routerLink="/">Home</a></li>
                     <li  ><a routerLink="/about">About Us</a></li>
+                     <li  ><a routerLink="/gadai/harga">Daftar STL</a></li>
 
                     <li *ngIf="auth.sudahLogin()" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transaksi <i class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a routerLink="/gadai/simulasi">Simulasi</a></li>
-                            <li><a routerLink="/gadai/stl">STL</a></li>
+
                         </ul>
                     </li>
 

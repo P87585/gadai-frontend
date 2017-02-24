@@ -8,14 +8,14 @@ import { SimulasiComponent } from './simulasi/simulasi.component';
 // import { FileSelectDirective } from 'ng2-file-upload';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../shared/auth.guard';
-import { StlComponent } from './stl/stl.component';
+import { HargaComponent } from './harga/harga.component';
 
 
 const routingGadai : Routes = [
 	{path : 'gadai/simulasi', component : SimulasiComponent, canActivate: [AuthGuard]},
 	{path : 'gadai/pengajuan', component : PengajuanComponent, canActivate: [AuthGuard]},
 	{path : 'gadai/history', component : HistoryComponent, canActivate: [AuthGuard]},
-  {path : 'gadai/stl', component : StlComponent, canActivate: [AuthGuard]}
+  {path : 'gadai/harga', component : HargaComponent},
 ];
 
 @NgModule({
@@ -24,8 +24,8 @@ const routingGadai : Routes = [
     FormsModule,
    RouterModule.forChild(routingGadai),
   ],
-  declarations: [PengajuanComponent, HistoryComponent, SimulasiComponent,
+  declarations: [PengajuanComponent, HistoryComponent, SimulasiComponent, HargaComponent,
   // FileSelectDirective, 
-  StlComponent]
+  ]
 })
 export class GadaiModule { }
