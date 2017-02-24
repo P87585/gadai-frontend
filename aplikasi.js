@@ -7,7 +7,7 @@ var authServer = 'https://gadai-auth.herokuapp.com',
 
 app.all("/oauth/*", function (req, res) {
     console.log('redirecting to auth server');
-    apiProxy.web(req, res, { target: authServer });
+    apiProxy.web(req, res, { target: authServer, secure :true });
 });
 
 app.all("/api/*", function (req, res) {
