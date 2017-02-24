@@ -1,10 +1,10 @@
 {
     "/oauth/token": {
-        "target": "http://localhost:10000",
+        "target": "https://gadai-auth.herokuapp.com",
         "secure": false
     },
     "/api/harga/": {
-        "target": "http://localhost:8080",
+        "target": "https://gadai-backend.herokuapp.com",
         "secure": false
     }
 }
