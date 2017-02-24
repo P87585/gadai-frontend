@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
+// import { FileUploader } from 'ng2-file-upload';
 import { Pengajuan } from './pengajuan.model';
 
 @Component({
@@ -10,7 +10,7 @@ import { Pengajuan } from './pengajuan.model';
 export class PengajuanComponent implements OnInit {
   
   @Input() pengajuan: Pengajuan;
-  @Input() fileUploader:FileUploader;
+  // @Input() fileUploader:FileUploader;
 
   @Output() pengajuanEmitter = new EventEmitter<Pengajuan>();
 

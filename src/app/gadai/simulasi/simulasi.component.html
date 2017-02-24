@@ -35,9 +35,14 @@
 
     <hr>
 
-    <pengajuan-gadai *ngIf="pengajuan.nilai" 
+    <!--<pengajuan-gadai *ngIf="pengajuan.nilai" 
       [pengajuan]="pengajuan" 
       [fileUploader]="objFileUploader"
+      (pengajuanEmitter)="tambahkanPengajuanKeTabel($event)">
+    </pengajuan-gadai>-->
+
+        <pengajuan-gadai *ngIf="pengajuan.nilai" 
+      [pengajuan]="pengajuan" 
       (pengajuanEmitter)="tambahkanPengajuanKeTabel($event)">
     </pengajuan-gadai>
 
@@ -59,7 +64,7 @@
             <th>Berat Kotor</th>
             <th>Berat Bersih</th>
             <th>Karatase</th>
-            <th>Foto</th>
+            <!--<th>Foto</th>-->
             <th>Nilai</th>
             <th>&nbsp;</th>
           </tr>
@@ -70,7 +75,7 @@
             <td>{{p.beratKotor}}</td>
             <td>{{p.beratBersih}}</td>
             <td>{{p.karatase}} karat</td>
-            <td>{{ objFileUploader.queue[i]?.file?.name }} ({{objFileUploader.queue[i]?.file?.size}})</td>
+            <!--<td>{{ objFileUploader.queue[i]?.file?.name }} ({{objFileUploader.queue[i]?.file?.size}})</td>-->
             <td>{{p.nilai}}</td>
             <td>
               <button class="btn btn-sm btn-default">hapus</button>

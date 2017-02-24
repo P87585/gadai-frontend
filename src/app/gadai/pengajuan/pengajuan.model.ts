@@ -4,5 +4,5 @@ export class Pengajuan {
     beratBersih: number;
     beratKotor: number;
     cabang : string;
-	foto : string;
+	// foto : string;
 }

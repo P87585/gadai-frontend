@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { ProgressDialogService } from '../progress-dialog.service';
+// import { ProgressDialogService } from '../progress-dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   username: string = "user001";
   password: string = "u00123";
 
-  constructor(private auth: AuthService, private router: Router,
-    private progressService: ProgressDialogService
+  constructor(private auth: AuthService, private router: Router
+  // ,private progressService: ProgressDialogService
   ) { }
 
   ngOnInit() {

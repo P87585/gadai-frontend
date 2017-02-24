@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap';
-import { ProgressbarModule } from 'ng2-bootstrap';
+// import { ProgressbarModule } from 'ng2-bootstrap';
 
 import { ModalModule } from 'ng2-bootstrap';
 
@@ -21,7 +21,7 @@ import { LupaComponent } from './shared/lupa/lupa.component';
 import { AboutComponent } from './shared/about/about.component';
 
 import { AuthGuard } from './shared/auth.guard';
-import { ProgressDialogService } from './shared/progress-dialog.service';
+// import { ProgressDialogService } from './shared/progress-dialog.service';
 
 
 const routingGaol : Routes = [
@@ -44,11 +44,13 @@ const routingGaol : Routes = [
     RouterModule.forRoot(routingGaol),
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
-    ProgressbarModule.forRoot(),
+    // ProgressbarModule.forRoot(),
     SharedModule,
     GadaiModule
   ],
-  providers: [AuthGuard, ProgressDialogService ],
+  providers: [AuthGuard, 
+  // ProgressDialogService 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

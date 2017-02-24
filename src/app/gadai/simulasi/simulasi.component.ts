@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
+// import { FileUploader } from 'ng2-file-upload';
 import { Pengajuan } from '../pengajuan/pengajuan.model';
 
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'app-simulasi',
@@ -12,7 +12,7 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 export class SimulasiComponent implements OnInit {
 
   pengajuan: Pengajuan = new Pengajuan();
-  public objFileUploader:FileUploader = new FileUploader({url: URL});
+  // public objFileUploader:FileUploader = new FileUploader({url: URL});
 
   pilihanKaratase = [
     { value: "18", label: "18 Karat" },
